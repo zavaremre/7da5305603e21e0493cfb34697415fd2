@@ -7,6 +7,7 @@ export default {
     removeLocalStroge() {
       localStorage.clear()
       this.$router.push('/')
+      window.location.href = '/'
     },
   },
 }

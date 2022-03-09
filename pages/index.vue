@@ -15,7 +15,7 @@
                 "
               >
                 <option value="0" disabled selected>Rezarvasyon yapmak istediğiniz oteli seçiniz.</option>
-                <option v-for="hotel in hotels" :key="hotel.id" :disabled="hotel.disable" :selected="hotel.id === 0" :value="hotel.id">
+                <option v-for="hotel in hotels" :key="hotel.id" :disabled="hotel.disable" :selected="hotel.id === 0" :value="hotel.id" @change="setHotelName(hotel.hotel_name)">
                   {{ hotel.hotel_name }}
                 </option>
               </select>
@@ -52,7 +52,7 @@
             </div>
           </div>
           <div class="rounded-2xl bg-gray-200 p-8">
-            <router-link to="/hotel-select" class="flex justify-end items-center w-full"><button class="bg-blue-800 rounded-2xl py-1.5 px-7 text-white" @click="send">Kaydet ve Devam Et</button></router-link>
+            <router-link to="/hotel-select" class="flex justify-end items-center w-full"><button :class="{ 'pointer-events-none opacity-40': !(selectData.start_date && selectData.end_date && selectData.hotel_id && selectData.adult) }" class="bg-blue-800 rounded-2xl py-1.5 px-7 text-white" @click="send">Kaydet ve Devam Et</button></router-link>
           </div>
         </form>
       </section>
@@ -76,11 +76,11 @@ export default {
         room_scenic: null,
         price: null,
         coupon_code: '',
-        card_name: '',
-        card_number: '',
-        card_date_month: '',
-        card_date_year: '',
-        card_cvv: '',
+        card_name: null,
+        card_number: null,
+        card_date_month: null,
+        card_date_year: null,
+        card_cvv: null,
       },
       max_adult_size: null,
       max_adult_size_status: false,
@@ -144,7 +144,6 @@ export default {
   methods: {
     setHotelName(value) {
       this.hotelName = value
-      console.log(this.hotelName)
     },
     checkAdultMaxQuota() {
       this.max_adult_size_status = false
