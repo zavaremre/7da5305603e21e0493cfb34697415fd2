@@ -1,7 +1,7 @@
 <template>
   <div class="p-5 md:p-0">
     <div class="container">
-      <div v-if="!end" class="mb-4 md:mb-0">
+      <div v-if="end" class="mb-4 md:mb-0">
         <div class="flex flex-col justify-center items-center w-full mb-4 p-5 bg-green-700 bg-opacity-10 rounded-lg">
           <h1 class="text-lg font-bold mb-3">Rezarvasyon kaydınız alınmıştır</h1>
           <p class="text-md text-center mb-3">Rezarvasyon özetiniz aşağıdaki gibidir.Rezarvasyon kaydında değişiklik veya yeni rezarvasyon yapmak için aşağıdaki linkleri kullanbilirisniz</p>
